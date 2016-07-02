@@ -9,7 +9,12 @@ Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitte
 * Input - Gaze, Tap, Voice
 * Shared - Multiplayer interactions
 
-## Notes
+## Feature List
+* Helper bot - fills out form
+* Login Form
+* Settings input Form
+
+## Technical Notes
 Currently is a simple bubble pop game. 
 
 Using the #WIN_UWP tag for UWP specific code, aka calling the bot framework. This tag spins off a seperate thread to handle UWP specific API calls. Will need to return from this thread to the Unity Thread if we want to implement Chain Dialogs.
