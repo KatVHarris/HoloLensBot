@@ -6,6 +6,9 @@ Project for integrating Microsoft Bot framework into Unity for Natural Language 
 Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitter
 
 ## Technical Notes
+07/06/16 
+The LUIS endpoint is working with direct ping from UnityWeb Request
+
 07/05/16
 Currently looking into Hololens and UAP Speech to Text API. Currently there is a listener to trigger certain commands in Hololens, but those are one word solutions, we want a more robust natural language processing to interact with a bot framework. 
 
