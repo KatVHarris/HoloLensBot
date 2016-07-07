@@ -59,5 +59,13 @@ public class GazeGestureManager : MonoBehaviour {
             recognizer.CancelGestures();
             recognizer.StartCapturingGestures();
         }
+
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            //GameObject bubbleObject = FocusedObject.transform.parent.gameObject;
+            //bubbleObject.gameObject.GetComponent<BubbleBehavior>().PopBubble(FocusedObject.gameObject);
+            FocusedObject.gameObject.GetComponent<BubbleBehavior>().PopBubble(FocusedObject.gameObject);
+                
+        }
     }
 }
