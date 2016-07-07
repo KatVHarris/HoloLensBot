@@ -4,13 +4,19 @@ using UnityEngine.Networking;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Collections.Generic;
 
 public class AutoLUISManager : MonoBehaviour {
 
     string requestString = "https://api.projectoxford.ai/luis/v1/application?id=a287f18f-4ae3-4346-b712-2bb9468f81c2&subscription-key=f2b59c258e5042a3b265498b92acd8a8&q=";
     public GameObject inputFieldObject;
     InputField userInput;
-    string requestText = ""; 
+    string requestText = "";
+    string luisValue = "";
+    JObject luisReturnQuery;
 
     void Start()
     {
@@ -51,12 +57,133 @@ public class AutoLUISManager : MonoBehaviour {
         {
             // Show results as text
             Debug.Log(www.downloadHandler.text);
-
+            luisValue = www.downloadHandler.text;
+            //JsonTextReader reader = new JsonTextReader(new StringReader(luisValue));
+            luisReturnQuery = JObject.Parse(luisValue);
+            string luisIntent = (luisReturnQuery.SelectToken("intents[0].intent").ToString()); //the accurate intent
+            IntentParser(luisIntent);
             // Or retrieve results as binary data
             byte[] results = www.downloadHandler.data;
         }
     }
+
+    void IntentParser(string intentName)
+    {
+        switch (intentName)
+        {
+            case "NameQuery":
+                
+                break;
+            default:
+                break; 
+
+        }
+    }
 }
 
+/*
+ * {
+  "query": "tell me about clarke",
+  "intents": [
+    {
+      "intent": "NameQuery",
+      "score": 0.994736,
+      "actions": [
+        {
+          "triggered": true,
+          "name": "NameQuery",
+          "parameters": [
+            {
+              "name": "XName",
+              "required": true,
+              "value": [
+                {
+                  "entity": "clarke",
+                  "type": "Character",
+                  "score": 0.9995919
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "None",
+      "score": 0.261976063
+    },
+    {
+      "intent": "LocateX",
+      "score": 0.0114280116,
+      "actions": [
+        {
+          "triggered": true,
+          "name": "LocateX",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "intent": "SortCharacter",
+      "score": 0.007171331,
+      "actions": [
+        {
+          "triggered": true,
+          "name": "SortCharacter",
+          "parameters": [
+            {
+              "name": "XName",
+              "required": false,
+              "value": [
+                {
+                  "entity": "clarke",
+                  "type": "Character",
+                  "score": 0.9995919
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "JoinCOL",
+      "score": 0.00281716418
+    },
+    {
+      "intent": "Greeting",
+      "score": 0.00267843017,
+      "actions": [
+        {
+          "triggered": true,
+          "name": "Greeting",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "intent": "CoreCommand",
+      "score": 1.72579857E-05
+    },
+    {
+      "intent": "Upgrade",
+      "score": 1.57786126E-05
+    },
+    {
+      "intent": "Help",
+      "score": 8.302972E-14
+    }
+  ],
+  "entities": [
+    {
+      "entity": "clarke",
+      "type": "Character",
+      "startIndex": 14,
+      "endIndex": 19,
+      "score": 0.9995919
+    }
+  ]
+}
 
+*/
 
