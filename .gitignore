@@ -50,6 +50,14 @@ Temp/
 Obj/
 UnityGenerated/
 Library/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+/[Ll]ibrary/
+[Bb]uild/
+[Uu]WP/
+sysinfo.txt
+*.stackdump
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
