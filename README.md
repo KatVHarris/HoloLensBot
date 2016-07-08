@@ -6,7 +6,9 @@ Project for integrating Microsoft Bot framework and LUIS into Unity for Natural 
 Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitter
 
 ## Technical Notes
-Currently integrated with LUIS.ai API for ALIEbot. The user can currently type request to get back infromation about the character. 
+
+A blog post about the project can be found here: http://katvharris.azurewebsites.net/blog/unity-luis-json/
+Currently integrated with LUIS.ai API for ALIEbot. The user can currently type request to get back infromation about a character. Next step is to use Voice Commands to Trigger LUIS calls.  
 
 07/06/16 
 The LUIS endpoint is working with direct ping from UnityWeb Request
