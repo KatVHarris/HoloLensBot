@@ -17,10 +17,13 @@ public class AutoLUISManager : MonoBehaviour {
     string requestText = "";
     string luisValue = "";
     JObject luisReturnQuery;
+    LUISAppManager mainLuisAppManager;
+    GameObject appManager; 
 
     void Start()
     {
-        //StartCoroutine(GetText());
+        appManager = GameObject.Find("AppManager");
+        mainLuisAppManager = appManager.GetComponent<LUISAppManager>();
         userInput = inputFieldObject.GetComponent<InputField>();
     }
 
@@ -58,12 +61,10 @@ public class AutoLUISManager : MonoBehaviour {
             // Show results as text
             Debug.Log(www.downloadHandler.text);
             luisValue = www.downloadHandler.text;
-            //JsonTextReader reader = new JsonTextReader(new StringReader(luisValue));
             luisReturnQuery = JObject.Parse(luisValue);
             string luisIntent = (luisReturnQuery.SelectToken("intents[0].intent").ToString()); //the accurate intent
             IntentParser(luisIntent);
-            // Or retrieve results as binary data
-            byte[] results = www.downloadHandler.data;
+
         }
     }
 
@@ -72,7 +73,9 @@ public class AutoLUISManager : MonoBehaviour {
         switch (intentName)
         {
             case "NameQuery":
-                
+                //CallCardManager with Character Name?
+                string characterName = (luisReturnQuery.SelectToken("entities[0].entity").ToString());
+                mainLuisAppManager.CharacterCardRequest(characterName);
                 break;
             default:
                 break; 

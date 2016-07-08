@@ -1,11 +1,13 @@
 # HoloLensBot
 ## Summary
-Project for integrating Microsoft Bot framework into Unity for Natural Language understanding in HoloLens applications. The HoloLens portion of the code was adapted from the HoloToolkit code from Microsoft https://github.com/Microsoft/HoloToolkit-Unity 
+Project for integrating Microsoft Bot framework and LUIS into Unity for Natural Language understanding in HoloLens applications. The HoloLens portion of the code was adapted from the HoloToolkit code from Microsoft https://github.com/Microsoft/HoloToolkit-Unity 
 
 ## Author
 Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitter
 
 ## Technical Notes
+Currently integrated with LUIS.ai API for ALIEbot. The user can currently type request to get back infromation about the character. 
+
 07/06/16 
 The LUIS endpoint is working with direct ping from UnityWeb Request
 
@@ -36,7 +38,6 @@ Using the #WIN_UWP tag for UWP specific code, aka calling the bot framework. Thi
 
 ## Feature List
 * Helper bot - fills out form
-* Login Form
 * Settings input Form
 
 
