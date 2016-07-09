@@ -7,8 +7,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Windows.Speech;
 
-namespace HoloToolkit.Unity
-{
     /// <summary>
     /// KeywordManager allows you to specify keywords and methods in the Unity
     /// Inspector, instead of registering them explicitly in code.
@@ -131,4 +129,3 @@ namespace HoloToolkit.Unity
             }
         }
     }
-}
