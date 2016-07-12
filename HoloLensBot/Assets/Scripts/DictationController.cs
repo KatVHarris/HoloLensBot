@@ -36,7 +36,7 @@ public class DictationController : MonoBehaviour {
     private AudioSource stopAudio;
 
     private float origLocalScale;
-    private bool animateWaveform;
+    //private bool animateWaveform;
     private bool recording = false; 
 
     public enum Message
@@ -65,8 +65,8 @@ public class DictationController : MonoBehaviour {
         startRecordingButton = startRecordingObject.GetComponent<Button>();
         stopRecordingButton = stopRecordingObject.GetComponent<Button>();
 
-        origLocalScale = Waveform.localScale.y;
-        animateWaveform = false;
+        //origLocalScale = Waveform.localScale.y;
+        //animateWaveform = false;
     }
 
     void Update()
