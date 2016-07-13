@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
-public class MicrophoneManager : MonoBehaviour {
+public class MicrophoneManager : MonoBehaviour
+{
     [Tooltip("A text area for the recognizer to display the recognized strings.")]
     public Text DictationDisplay;
 
@@ -68,7 +69,7 @@ public class MicrophoneManager : MonoBehaviour {
     public AudioClip StartRecording()
     {
         // 3.a Shutdown the PhraseRecognitionSystem. This controls the KeywordRecognizers
-        //PhraseRecognitionSystem.Shutdown();
+        PhraseRecognitionSystem.Shutdown();
 
         // 3.a: Start dictationRecognizer
         dictationRecognizer.Start();
@@ -157,11 +158,5 @@ public class MicrophoneManager : MonoBehaviour {
         }
 
         keywordToStart.StartKeywordRecognizer();
-    }
-
-    public string getCompletedString()
-    {
-        string completedText = textSoFar.ToString();
-        return completedText; 
     }
 }
