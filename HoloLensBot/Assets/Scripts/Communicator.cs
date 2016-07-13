@@ -103,6 +103,8 @@ public class Communicator : MonoBehaviour
             // Set proper UI state and play a sound.
             SetUI(true, Message.PressStop, startAudio);
 
+            //STOP the PhraseRecognizer!!
+
             RecordButton.gameObject.SetActive(false);
             RecordStopButton.gameObject.SetActive(true);
             recording = true; 
@@ -123,6 +125,7 @@ public class Communicator : MonoBehaviour
 
             PlayButtonObject.SetActive(true);
             RecordStopButtonObject.SetActive(false);
+            RecordButtonObject.SetActive(true);
             recording = false; 
         }
     }
@@ -172,7 +175,7 @@ public class Communicator : MonoBehaviour
         //SoundMeter.gameObject.SetActive(enabled);
         MicIcon.SetActive(enabled);
 
-        //StartCoroutine(ChangeLabel(newMessage));
+        //FStartCoroutine(ChangeLabel(newMessage));
 
         soundToPlay.Play();
     }

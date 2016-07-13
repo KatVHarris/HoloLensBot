@@ -55,10 +55,12 @@ public class MicrophoneManager : MonoBehaviour
         // 3.a: Add condition to check if dictationRecognizer.Status is Running
         if (!Microphone.IsRecording(deviceName) && dictationRecognizer.Status == SpeechSystemStatus.Running)
         {
+
             // This acts like pressing the Stop button and sends the message to the Communicator.
             // If the microphone stops as a result of timing out, make sure to manually stop the dictation recognizer.
             // Look at the StopRecording function.
             SendMessage("RecordStop");
+
         }
     }
 
@@ -70,6 +72,7 @@ public class MicrophoneManager : MonoBehaviour
     {
         // 3.a Shutdown the PhraseRecognitionSystem. This controls the KeywordRecognizers
         PhraseRecognitionSystem.Shutdown();
+        Debug.Log(PhraseRecognitionSystem.Status);
 
         // 3.a: Start dictationRecognizer
         dictationRecognizer.Start();
@@ -156,7 +159,10 @@ public class MicrophoneManager : MonoBehaviour
         {
             yield return null;
         }
-
+        if (PhraseRecognitionSystem.Status.ToString() == "Stopped")
+        {
+            PhraseRecognitionSystem.Restart();
+        }
         keywordToStart.StartKeywordRecognizer();
     }
 }
