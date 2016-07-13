@@ -27,6 +27,8 @@ public class DictationController : MonoBehaviour {
     public GameObject startRecordingObject;
     public GameObject stopRecordingObject;
 
+    private AutoLUISManager autoLUISManager; 
+
     public Button startRecordingButton;
     public Button stopRecordingButton; 
 
@@ -65,6 +67,8 @@ public class DictationController : MonoBehaviour {
         startRecordingButton = startRecordingObject.GetComponent<Button>();
         stopRecordingButton = stopRecordingObject.GetComponent<Button>();
 
+        autoLUISManager = GameObject.Find("LUISManager").GetComponent<AutoLUISManager>();
+
         //origLocalScale = Waveform.localScale.y;
         //animateWaveform = false;
     }
@@ -86,8 +90,8 @@ public class DictationController : MonoBehaviour {
             // Turn the microphone on, which returns the recorded audio.
             dictationAudio.clip = microphoneManager.StartRecording();
 
-            startRecordingButton.gameObject.SetActive(false);
-            stopRecordingButton.gameObject.SetActive(true);
+            startRecordingObject.SetActive(false);
+            stopRecordingObject.SetActive(true);
         }
     }
 
@@ -95,46 +99,32 @@ public class DictationController : MonoBehaviour {
     {
         if (recording)
         {
+
             // Turn off the microphone.
             microphoneManager.StopRecording();
+            SendMessage();
+
             // Restart the PhraseRecognitionSystem and KeywordRecognizer
             microphoneManager.StartCoroutine("RestartSpeechSystem", GetComponent<KeywordManager>());
 
 
             startRecordingObject.SetActive(true);
             stopRecordingObject.SetActive(false);
+
         }
     }
 
-    //public void Play()
-    //{
-    //    if (playingBackClip)
-    //    {
-    //        PlayButton.gameObject.SetActive(false);
-    //        PlayStopButton.gameObject.SetActive(true);
-
-    //        dictationAudio.Play();
-    //    }
-    //}
-
-    //public void PlayStop()
-    //{
-    //    if (PlayStopButton.IsOn())
-    //    {
-    //        PlayStopButton.gameObject.SetActive(false);
-    //        PlayButton.gameObject.SetActive(true);
-
-    //        dictationAudio.Stop();
-    //    }
-    //}
-
     public void SendMessage()
     {
-        //AstronautWatch.Instance.CloseCommunicator();
+        //SEND TO LUIS -- time out
+        string completedString = microphoneManager.getCompletedString();
+        autoLUISManager.setDictationRequest(completedString);
+        
     }
 
     void ResetAfterTimeout()
     {
+        //Send Message to LUIS Controller
         stopRecordingObject.gameObject.SetActive(false);
         startRecordingObject.gameObject.SetActive(true);
     }

@@ -14,6 +14,7 @@ public class AutoLUISManager : MonoBehaviour {
     string requestString = "https://api.projectoxford.ai/luis/v1/application?id=a287f18f-4ae3-4346-b712-2bb9468f81c2&subscription-key=f2b59c258e5042a3b265498b92acd8a8&q=";
     public GameObject inputFieldObject;
     InputField userInput;
+    
     string requestText = "";
     string luisValue = "";
     JObject luisReturnQuery;
@@ -23,7 +24,7 @@ public class AutoLUISManager : MonoBehaviour {
     void Start()
     {
         appManager = GameObject.Find("AppManager");
-        mainLuisAppManager = appManager.GetComponent<LUISAppManager>();
+        //mainLuisAppManager = appManager.GetComponent<LUISAppManager>();
         userInput = inputFieldObject.GetComponent<InputField>();
     }
 
@@ -42,7 +43,13 @@ public class AutoLUISManager : MonoBehaviour {
         //turn spaces into %20 
         //append to request string 
         requestText = Regex.Replace(userInput.text, @"\s+", "%20");
-        Debug.Log(requestText);
+        StartCoroutine(GetText());
+
+    }
+
+    public void setDictationRequest(string dictationString)
+    {
+        requestText = Regex.Replace(dictationString, @"\s+", "%20");
         StartCoroutine(GetText());
 
     }
@@ -75,7 +82,8 @@ public class AutoLUISManager : MonoBehaviour {
             case "NameQuery":
                 //CallCardManager with Character Name?
                 string characterName = (luisReturnQuery.SelectToken("entities[0].entity").ToString());
-                mainLuisAppManager.CharacterCardRequest(characterName);
+                //mainLuisAppManager.CharacterCardRequest(characterName);
+                Debug.Log("worked");
                 break;
             default:
                 break; 
