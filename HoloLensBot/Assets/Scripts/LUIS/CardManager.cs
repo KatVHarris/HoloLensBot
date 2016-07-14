@@ -74,7 +74,12 @@ public class CardManager : MonoBehaviour {
         }
         if (name.ToLower() == "clarke")
         {
-            descriptionText.text = "Clarke aka Wanheda";
+            descriptionText.text = "Clarke is strong and determined. Her friends and family are her weakness. She is not as clever as Raven, though she is resourceful. \n\n " +
+                                    "* Age: 18 \n\n " +
+                                    "* Living Family: Dr. Abigail Griffin \n\n" +
+                                    "* Kills: 900+ \n\n" +
+                                    "* Skills: Politics, Medical Knowledge";
+            StartCoroutine(GetTexture("http://vignette4.wikia.nocookie.net/thehundred/images/6/68/The-100-season-2-cast-photos-clarke.png/revision/latest?cb=20160401042738"));
         }
     }
 
