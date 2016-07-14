@@ -1,6 +1,7 @@
 ﻿using HoloToolkit;
 using System.Collections;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
@@ -104,6 +105,7 @@ public class MicrophoneManager : MonoBehaviour
     /// <param name="text">The currently hypothesized recognition.</param>
     private void DictationRecognizer_DictationHypothesis(string text)
     {
+        text = Checknames(text);
         // 3.a: Set DictationDisplay text to be textSoFar and new hypothesized text
         // We don't want to append to textSoFar yet, because the hypothesis may have changed on the next event
         DictationDisplay.text = textSoFar.ToString() + " " + text + "...";
@@ -116,6 +118,8 @@ public class MicrophoneManager : MonoBehaviour
     /// <param name="confidence">A representation of how confident (rejected, low, medium, high) the recognizer is of this recognition.</param>
     private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
     {
+        text = Checknames(text);
+
         // 3.a: Append textSoFar with latest text
         textSoFar.Append(text + ". ");
 
@@ -177,5 +181,30 @@ public class MicrophoneManager : MonoBehaviour
     public void ClearDictation()
     {
         textSoFar.Remove(0, textSoFar.Length);
+    }
+
+    string Checknames(string checkString)
+    {
+        string input = checkString;
+        string pattern = "clark";
+        string checkedString = "";
+        Match m = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
+        if (m.Success)
+        {
+            //replace Clarke
+            Regex regexWord = new Regex(pattern);
+            checkedString = regexWord.Replace(input, "clarke");
+            Debug.Log(checkedString);
+        }
+        else
+        {
+            checkedString = checkString;
+        }
+
+
+        //if (m.Success)
+        //    Debug.Log("Found '{0}' at position {1}.", m.Value, m.Index);
+
+        return checkedString; 
     }
 }

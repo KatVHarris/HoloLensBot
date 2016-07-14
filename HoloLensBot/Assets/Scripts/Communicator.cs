@@ -135,6 +135,7 @@ public class Communicator : MonoBehaviour
             if(DictationTypeLUIS == DictationToLUISType.OnPause)
             {
                 SendToLuis();
+                microphoneManager.ClearDictation();
             }
 
             // Set proper UI state and play a sound.

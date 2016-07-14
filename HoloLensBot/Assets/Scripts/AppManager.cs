@@ -21,7 +21,7 @@ public class AppManager : MonoBehaviour {
     public void CharacterCardRequest(string requestName)
     {
         // Erase Canvas
-        dictationCanvas.SetActive(false);
+        //dictationCanvas.SetActive(false);
         currentRequestName = requestName;
 
         // DO things
