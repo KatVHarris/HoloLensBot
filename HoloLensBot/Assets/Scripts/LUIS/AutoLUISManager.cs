@@ -18,11 +18,11 @@ public class AutoLUISManager : MonoBehaviour {
     string requestText = "";
     string luisValue = "";
     JObject luisReturnQuery;
-    GameObject appManager; 
+    AppManager appManager; 
 
     void Start()
     {
-        appManager = GameObject.Find("AppManager");
+        appManager = GameObject.Find("AppManager").GetComponent<AppManager>();
         userInput = inputFieldObject.GetComponent<InputField>();
     }
 
@@ -74,9 +74,8 @@ public class AutoLUISManager : MonoBehaviour {
         switch (intentName)
         {
             case "NameQuery":
-                //CallCardManager with Character Name?
                 string characterName = (luisReturnQuery.SelectToken("entities[0].entity").ToString());
-                //mainLuisAppManager.CharacterCardRequest(characterName);
+                appManager.CharacterCardRequest(characterName);
                 Debug.Log("worked");
                 break;
             default:

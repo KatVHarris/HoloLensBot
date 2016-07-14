@@ -165,4 +165,17 @@ public class MicrophoneManager : MonoBehaviour
         }
         keywordToStart.StartKeywordRecognizer();
     }
+
+    // Clears dictation sentence 
+    public string GetDictation()
+    {
+        string completedString = textSoFar.ToString();
+        return completedString;
+        
+    }
+
+    public void ClearDictation()
+    {
+        textSoFar.Remove(0, textSoFar.Length);
+    }
 }

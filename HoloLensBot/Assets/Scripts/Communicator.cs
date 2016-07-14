@@ -10,6 +10,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource), typeof(MicrophoneManager), typeof(KeywordManager))]
 public class Communicator : MonoBehaviour
 {
+    // This enumeration gives the manager two different ways to handle how to send messages to LUIS. Both will
+    // interact with LUIS. The first causes automatic sending to LUIS on timeout.
+    // The second allows the dictation phrase to be manually sent.
+    public enum DictationToLUISType { OnPause, OnClickSend };
+
+    [Tooltip("Determines whether automatic or manual select will ping LUIS")]
+    public DictationToLUISType DictationTypeLUIS;
+
+    AutoLUISManager LUISController; 
+
     [Tooltip("The button to be selected when the user wants to record audio and dictation.")]
     public GameObject RecordButtonObject;
     [Tooltip("The button to be selected when the user wants to stop recording.")]
@@ -78,8 +88,10 @@ public class Communicator : MonoBehaviour
 
         microphoneManager = GetComponent<MicrophoneManager>();
 
+        LUISController = GameObject.Find("LUISManager").GetComponent<AutoLUISManager>();
+
         //origLocalScale = Waveform.localScale.y;
-        animateWaveform = false;
+        //animateWaveform = false;
     }
 
     void Update()
@@ -119,6 +131,11 @@ public class Communicator : MonoBehaviour
             microphoneManager.StopRecording();
             // Restart the PhraseRecognitionSystem and KeywordRecognizer
             microphoneManager.StartCoroutine("RestartSpeechSystem", GetComponent<KeywordManager>());
+
+            if(DictationTypeLUIS == DictationToLUISType.OnPause)
+            {
+                SendToLuis();
+            }
 
             // Set proper UI state and play a sound.
             SetUI(false, Message.SendMessage, stopAudio);
@@ -206,5 +223,12 @@ public class Communicator : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    void SendToLuis()
+    {
+        string luisRequest = microphoneManager.GetDictation();
+        LUISController.setDictationRequest(luisRequest);
+        
     }
 }

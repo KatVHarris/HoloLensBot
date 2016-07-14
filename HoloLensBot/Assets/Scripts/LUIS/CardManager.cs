@@ -44,12 +44,20 @@ public class CardManager : MonoBehaviour {
     {
         if(name.ToLower() == "clarke")
         {
+            nameText.text = "Raven Reyes";
+        }
+        if (name.ToLower() == "raven")
+        {
             nameText.text = "Clarke Griffin";
         }
     }
 
     void SetCharacterDescription(string name)
     {
+        if (name.ToLower() == "raven")
+        {
+            descriptionText.text = "Raven most awesomest EVA!!!";
+        }
         if (name.ToLower() == "clarke")
         {
             descriptionText.text = "Clarke aka Wanheda";
