@@ -5,7 +5,11 @@ Project for integrating Microsoft Bot framework and LUIS into Unity for Natural 
 ## Author
 Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitter
 
+## Project Setup
+If you would like to use the revised DictationController (aka Communicator) and LUISManager_Hololens code, they can be found as Prefabs in the Holograms folder. 
+
 ## Technical Notes
+A blog post about getting HoloLens Speech and Dictation working with LUIS can be found here: http://bit.ly/HoloLUIS
 
 A blog post about the project can be found here: http://katvharris.azurewebsites.net/blog/unity-luis-json/
 Currently integrated with LUIS.ai API for ALIEbot. The user can currently type request to get back infromation about a character. Next step is to use Voice Commands to Trigger LUIS calls.  
