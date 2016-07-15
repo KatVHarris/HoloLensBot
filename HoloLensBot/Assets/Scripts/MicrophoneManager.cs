@@ -191,7 +191,6 @@ public class MicrophoneManager : MonoBehaviour
         Match m = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
         if (m.Success)
         {
-            //replace Clarke
             Regex regexWord = new Regex(pattern);
             checkedString = regexWord.Replace(input, "clarke");
             Debug.Log(checkedString);
