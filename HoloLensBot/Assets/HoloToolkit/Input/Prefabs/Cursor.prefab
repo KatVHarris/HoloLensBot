@@ -189,6 +189,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
@@ -201,6 +202,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -276,7 +278,7 @@ MonoBehaviour:
     type: 2}
   PathingDetectedAsset: {fileID: 1000012994708280, guid: 9be60755951057440a2bf0a68bb9e6ef,
     type: 2}
-  VoiceCommandDetectedAsset: {fileID: 153842, guid: 60e7521e578d04840bca2dcd9fbb2f08,
+  VoiceCommandDetectedAsset: {fileID: 153842, guid: 533a155b5af7a75498db8c2afcbc2eb8,
     type: 2}
   FeedbackParent: {fileID: 183460}
 --- !u!114 &11477520
@@ -354,6 +356,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
@@ -366,6 +369,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
