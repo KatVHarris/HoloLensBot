@@ -1,6 +1,6 @@
 # HoloLensBot
 ## Summary
-This project integrates Microsoft's LUIS API into Unity for Natural Language understanding in HoloLens applications. The HoloLens portion of the code was adapted from the HoloToolkit code from Microsoft https://github.com/Microsoft/HoloToolkit-Unity. The LUIS API in the sample folder is using the ALLIEBot API that answers questions about the show The 100. 
+This project integrates Microsoft's LUIS API into Unity for Natural Language understanding in HoloLens applications. The HoloLens portion of the code was adapted from the HoloToolkit code from Microsoft https://github.com/Microsoft/HoloToolkit-Unity. The LUIS API in the sample folder is using the ALIEBot API (https://github.com/KatVHarris/ALIEbot) that answers questions about the show The 100. 
 
 ## Author
 Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitter
