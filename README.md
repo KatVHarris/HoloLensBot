@@ -1,12 +1,17 @@
 # HoloLensBot
 ## Summary
-Project for integrating Microsoft Bot framework and LUIS into Unity for Natural Language understanding in HoloLens applications. The HoloLens portion of the code was adapted from the HoloToolkit code from Microsoft https://github.com/Microsoft/HoloToolkit-Unity 
+This project integrates Microsoft's LUIS API into Unity for Natural Language understanding in HoloLens applications. The HoloLens portion of the code was adapted from the HoloToolkit code from Microsoft https://github.com/Microsoft/HoloToolkit-Unity. The LUIS API in the sample folder is using the ALIEBot API (https://github.com/KatVHarris/ALIEbot) that answers questions about the show The 100. 
 
 ## Author
 Katherine "Kat" Harris - Technical Evangelist at Microsoft. @KATVHARRIS - Twitter
 
 ## Project Setup
-If you would like to use the revised DictationController (aka Communicator) and LUISManager_Hololens code, they can be found as Prefabs in the Holograms folder. 
+To set up dictation and LUIS drag the revised DictationController (aka Communicator) and LUISManager_Hololens prefabs into your scene. They can be found as Prefabs in the Holograms folder. 
+
+## Future Feature List
+* Create Inspector attribute to plug-in any LUIS library
+* Create Sample Scene Folder and Sample Scene
+
 
 ## Technical Notes
 A blog post about getting HoloLens Speech and Dictation working with LUIS can be found here: http://bit.ly/HoloLUIS
@@ -42,9 +47,6 @@ Using the #WIN_UWP tag for UWP specific code, aka calling the bot framework. Thi
 * Input - Gaze, Tap, Voice
 * Shared - Multiplayer interactions
 
-## Feature List
-* Helper bot - fills out form
-* Settings input Form
 
 
 
