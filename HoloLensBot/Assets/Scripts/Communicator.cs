@@ -173,11 +173,6 @@ public class Communicator : MonoBehaviour
         }
     }
 
-    public void SendCommunicatorMessage()
-    {
-        AstronautWatch.Instance.CloseCommunicator();
-    }
-
     void ResetAfterTimeout()
     {
         // Set proper UI state and play a sound.

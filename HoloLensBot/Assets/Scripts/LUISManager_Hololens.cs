@@ -87,7 +87,7 @@ public class LUISManager_Hololens : MonoBehaviour {
 }
 
 /*
- * {
+ * { Doing the thing
   "query": "tell me about clarke",
   "intents": [
     {

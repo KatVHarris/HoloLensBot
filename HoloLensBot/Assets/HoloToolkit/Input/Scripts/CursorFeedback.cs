@@ -96,8 +96,8 @@ public class CursorFeedback : MonoBehaviour
         {
             return;
         }
-
-        handDetectedGameObject.SetActive(HandsManager.Instance.HandDetected);
+        if(handDetectedGameObject != null)
+            handDetectedGameObject.SetActive(HandsManager.Instance.HandDetected);
     }
 
     private void UpdatePathDetectedState()
@@ -147,7 +147,7 @@ public class CursorFeedback : MonoBehaviour
             return;
         }
 
-        bool voiceCommandAvailable = InteractibleManager.Instance.FocusedGameObject.tag.Equals("VoiceCommand") && !AstronautWatch.Instance.CommunicatorOpen;
+        bool voiceCommandAvailable = InteractibleManager.Instance.FocusedGameObject.tag.Equals("VoiceCommand"); //&& !AstronautWatch.Instance.CommunicatorOpen;
 
         // Show cursor feedback that voice command is available.
         voiceCommandDetectedGameObject.SetActive(voiceCommandAvailable);
